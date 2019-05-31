@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+<title>Constructing a Queue in Python</title>
+</head>
+<body>
+	<header><h1>Test driven development in Python with Pytest</h1>
+		<span class="subtitle">Constructing Queue with TDD</span></header>
+	<nav id="navbar">
+	</nav>
+	<section id="intro" class="main-section">
+		<header><h2>Introduction</h2></header>
+		<p>As a fun-employed person seeking SWE-position in the bay area, you may come across the phrase Test-Driven Development (TDD). TDD have become a pretty popular practice in the industry.</p>
+		<p>In the sections below, I will demonstrate test-driven development using Python and Pytest by constructing a very simple data structure called Queue.</p>
+	</section>
+	<section id="tdd" class="main-section">
+			<header><h2>What is test-driven development?</h2></header>
+			<p>According to wikipedia:</p>
+			<blockquote>Test-driven development is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.</blockquote>
+	</section>
+	<section id="pytest" class="main-section">
+			<header><h2>What is Pytest</h2></header>
+			<p>Pytest is a popular testing framework. It allows you to easily write tests.</p>
+			<h3>Example: hello.py</h3>
+			<p> Here is a simple program: </p>
+			<div class="code-block">
+			<span>hello_name.py</span>
+			<code>
+				def hello_name(name):
+					return f'hello {name}!'
+			</code>
+			</div>
+			<p>The `test_hello_name.py` is a test for `hello.py`.</p>	
+			<div class="code-block">
+			<span>test_hello_name.py</span>
+			<code>
+				from hello import hello_name
+
+				def test_hello_name(name):
+					assert hell_name('bob') == 'hello bob'
+			</code>
+			</div>
+			<p>To run the test above, run the following command on the command line:</p>
+			<code>
+				pytest test_hello.py
+			</code>
+			<p><span class="note">Note:</span> All test functions should have 'test_' as the first 5 chars of the name.</p>
+	</section>
+	<section id="queue" class="main-section">
+			<header><h2>What is Queue</h2></header>
+			<p>Queue is a data structure whih follows the <span class="first-letter">First-In-first-out</span> paradigm.</p>
+			<p>In our construction, the Queue class will have the following methods:</p>
+			<ul>
+				<li>is_empty(): check whether my queue is empty or not</li>
+				<li>size(): size of the queue.</li>
+				<li>enqueue(x): add “x” to the queue</li>
+				<li>peek(): return the item at the “head” of the queue without making any changes to the queue itself</li>
+				<li>dequeue(): remove the item at the “head” of the queue and return it</li>
+			</ul>
+			<p>In other words, `queue.py` will start out looking like this:</p>
+			<div class="code-block">
+				<span>queue.py</span>
+				<code>
+					class Queue:
+						
+						def __init__(self):
+							pass
+
+						def is_empty(self):
+							pass
+
+						def size(self):
+							pass
+
+						def enqueue(self, x):
+							pass
+
+						def peek(self):
+							pass
+
+						def dequeue(self):
+							pass
+
+				</code>
+			</div>
+			<p>Furthermore, all methods listed above should have a runtime of O(1).</p>
+	</section>
+	<section id="construction" class="main-section">
+		<header><h2>Constructing the queue</h2></header>
+		<h3>is_empty: version 1</h3>
+		<p>When a queue is created, the queue should be empty.</p>
+		<div class="code-block">
+			<span>test_queue.py</span>
+			<code>
+				from queue import Queue
+
+				def test_is_empty():
+					new_queue = Queue()
+					assert new_queue.is_empty == True
+			</code>
+		</div>
+		
+		<p>We'll add more lines to `test_is_empty` as we go on. For now, we should just focus on defining the simplest `is_empty` emthod that will pass the test. And this can be done very easily:</p>	
+		<div class="code-block">
+			<span>queue.py</span>
+			<code>
+				def is_empty():
+					return True
+			</code>
+		</div>
+	</section>
+</body>
