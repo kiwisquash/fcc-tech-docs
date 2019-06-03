@@ -7,21 +7,26 @@
 <title>Constructing a Queue in Python</title>
 </head>
 <body>
-	<header><h1>Test driven development in Python with Pytest</h1>
-		<span class="subtitle">Constructing Queue with TDD</span></header>
 	<nav id="navbar">
+		<header><h1>Constructing a Python queue class with TDD</h1></header>
+		<a class="nav-link" href="#Introduction">Introduction</a>
+		<a class="nav-link" href="#What_is_test_driven_development">What is test driven development</a>
+		<a class="nav-link" href="#What_is_Pytest">What is Pytest</a>
+		<a class="nav-link" href="#What_is_queue">What is queue</a>
+		<a class="nav-link" href="#Constructing_the_queue">Constructing the queue</a>
+		<a class="nav-link" href="#Refactoring_for_better_runtime">Refactoring for better runtime</a>
 	</nav>
-	<section id="intro" class="main-section">
-		<header><h2>Introduction</h2></header>
-		<p>As a fun-employed person seeking SWE-position in the bay area, you may come across the phrase Test-Driven Development (TDD). TDD have become a pretty popular practice in the industry.</p>
-		<p>In the sections below, I will demonstrate test-driven development using Python and Pytest by constructing a very simple data structure called Queue.</p>
-	</section>
-	<section id="tdd" class="main-section">
-			<header><h2>What is test-driven development?</h2></header>
+
+	<main id="main-doc"><section id="Introduction" class="main-section">
+			<header><h2>Introduction</h2></header>
+			<p>In the sections below, I will demonstrate test-driven development using Python and Pytest by constructing a very simple data structure called queue.</p>
+		</section>
+	<section id="What_is_test_driven_development" class="main-section">
+			<header><h2>What is test driven development</h2></header>
 			<p>According to wikipedia:</p>
 			<blockquote>Test-driven development is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.</blockquote>
 	</section>
-	<section id="pytest" class="main-section">
+	<section id="What_is_Pytest" class="main-section">
 			<header><h2>What is Pytest</h2></header>
 			<p>Pytest is a popular testing framework. It allows you to easily write tests.</p>
 			<h3>Example: hello.py</h3>
@@ -49,8 +54,8 @@
 			</code>
 			<p><span class="note">Note:</span> All test functions should have 'test_' as the first 5 chars of the name.</p>
 	</section>
-	<section id="queue" class="main-section">
-			<header><h2>What is Queue</h2></header>
+	<section id="What_is_queue" class="main-section">
+			<header><h2>What is queue</h2></header>
 			<p>Queue is a data structure whih follows the <span class="first-letter">First-In-first-out</span> paradigm.</p>
 			<p>In our construction, the Queue class will have the following methods:</p>
 			<ul>
@@ -88,7 +93,7 @@
 			</div>
 			<p>Furthermore, all methods listed above should have a runtime of O(1).</p>
 	</section>
-	<section id="construction" class="main-section">
+	<section id="Constructing_the_queue" class="main-section">
 		<header><h2>Constructing the queue</h2></header>
 		<div class="sub-section">
 		<h3>is_empty()</h3>
@@ -354,8 +359,8 @@
 			</div>
 		</div>
 	</section>
-	<section>
-		<header><h2>Refactoring Queue for O(1) time</h2></header>
+	<section  id="Refactoring_for_better_runtime" class="main-section">
+		<header><h2>Refactoring for better runtime</h2></header>
 		<p>In the last section, we successfully constructed a queue class that passes all the tests.</p>
 		<p>However, there is a performance issue with dequeue(): pop(0) is O(n), where n is the size of the queue. Ideally, we would like all queue operations to be O(1).</p>
 		<p>To do this, we can model the queue using 2 lists, one for enqueue and one for dequeue. Whenever peek() or dequeue() is called and the dequeue list is empty, the items from enqueue will be popped into the dequeue list. Below, I added a private method called 'transfer' which does exactly that.</p>
@@ -391,6 +396,7 @@
 		</div>
 		<p>We don't need to make any changes to the test_queue.py. We just need to run it and see if the new queue class passes all the test. And they do.</p> 
 	</section>
+	</main>
 	<footer>
     <p>Copyright &#169; <time datetime="2019">2019</time> by Ki Song. All rights reserved.</p>
 		<p>See code on the <a href="https://github.com/kiwisquash/fcc-product-landing">github repo</a> or <a href="https://codepen.io/kiwisquash/pen/zXewzO">codepen</a>.</p>
