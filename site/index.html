@@ -30,15 +30,15 @@
 			<h3>Example: hello.py</h3>
 			<p> Here is a simple program: </p>
 			<div class="code-block">
-			<p>hello_name.py</p>
+			<p>hello.py</p>
 			<code>def hello_name(name): 
     return f'hello {name}!'
 			</code>
 			</div>
-			<p>The <code>test_hello_name.py</code> is a test for <code>hello.py</code>.</p>	
+			<p><code>test_hello.py</code> is a test for <code>hello.py</code>.</p>	
 
 			<div class="code-block">
-			<p>test_hello_name.py</p>
+			<p>test_hello.py</p>
 			<code>from hello import hello_name
 
 def test_hello_name(name):
@@ -46,9 +46,9 @@ def test_hello_name(name):
 			</code>
 			</div>
 			<p>To run the test above, run the following command on the command line:</p>
-			<code>
-				pytest test_hello.py
-			</code>
+			<div class="command-line"><code>
+					pytest test_hello.py
+				</code></div>
 			<p><span class="note">Note:</span> All test functions should have 'test_' as the first 5 chars of the name.</p>
 			<p>For more details regarding Pytest, including installation instructions, please check <a href="https://docs.pytest.org/en/latest/">pytest's documentation page.</a>
 	</section>
