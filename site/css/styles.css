@@ -1,0 +1,50 @@
+ /* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {...} */
+
+body {
+	margin: 0;
+}
+
+#navbar {
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+}
+
+.nav-links {
+	overflow-y: scroll;
+	height: 3.5em;
+}
+
+.nav-link {
+	display: block;
+	width: 100%;
+}
+
+#main-doc {
+	margin-top: 20em;
+}
+
+.code-block code {
+	text-align: left;
+	white-space: pre;
+  word-break: normal;
+  word-wrap: normal;s
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */ 
