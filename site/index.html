@@ -72,23 +72,23 @@ def test_hello_name(name):
 				<p>queue.py</p>
 				<code>class Queue:
 
-def __init__(self):
-    pass
-
-def is_empty(self):
-    pass
-
-def size(self):
-    pass
-
-def enqueue(self, x):
-    pass
-
-def peek(self):
-    pass
-
-def dequeue(self):
-    pass</code>
+    def __init__(self):
+        pass
+    
+    def is_empty(self):
+        pass
+    
+    def size(self):
+        pass
+    
+    def enqueue(self, x):
+        pass
+    
+    def peek(self):
+        pass
+    
+    def dequeue(self):
+        pass</code>
 			</div>
 			<p>All methods listed above should have a runtime of <code>O(1)</code>.</p>
 	</section>
@@ -150,8 +150,7 @@ def enqueue():
 			<p>In fact, most of <code>test_size()</code> can be copied from <code>test_is_empty()</code>:</p>
 			<div class="code-block">
 				<p>test_queue.py</p>
-				<code>...
-def test_size():
+				<code>def test_size():
     new_queue = Queue()
     assert new_queue.size() == 0
     new_queue.enqueue("x")
@@ -200,7 +199,7 @@ def size(self):
 			<p><code>peek()</code> should return the head.</p>
 				<div class="code-block">
 					<p>test_queue.py</p>
-					<code>...
+					<code>
 def test_peek():
     new_queue = Queue()
     new_queue.enqueue("x")
@@ -214,7 +213,7 @@ def test_peek():
 				<p>Here are the corresponding changes to the <code>Queue</code> class:</p>	
 				<div class="code-block">
 					<p>queue.py</p>
-					<code>...
+					<code>
 
 def __init__(self):
     self.count = 0
@@ -227,7 +226,7 @@ def enqueue(self, x):
 def peek(self):
     return self.head
 
-...</code>
+</code>
 			</div>
 			<p><span class="note">Note</span>: The constructions above ignores the edge case when the queue is empty. The reader is encouraged to handle this edge case.</p>
 <p>So far, our <code>Queue</code> lacked any semblance of what one might intuitively think as a queue&#8212;a data structure that hold multiple items. This will change with the addition of the <code>dequeue</code>.</p>
@@ -338,31 +337,33 @@ def dequeue(self):
 		<p>To do this, we can model the queue using 2 lists, one for enqueue and one for dequeue. Whenever <code>peek()</code> or <code>dequeue()</code> is called and the dequeue list is empty, the items from enqueue will be popped into the dequeue list. Below, I added a private method called <code>_transfer</code> which does exactly that.</p>
 		<div class="code-block">
 			<p>queue.py</p>
-		<code>def __init__(self):
-    self.en_arr = []	
-    self.de_arr = []	
+		<code>class Queue:
 
-def is_empty(self):
-    return self.size() == 0
-
-def size(self):
-    return len(self.en_arr) + len(self.de_arr)
-
-def enqueue(self, x):
-    self.en_arr.append(x)
-
-def peek(self):
-    self._transfer()
-    return self.de_arr[-1]
-
-def dequeue(self):
-    self._transfer()
-    return self.de_arr.pop()
-
-def _transfer(self):
-    if not self.de_arr:
-        while self.en_arr:
-            self.de_arr.append(self.en_arr.pop())</code>
+    def __init__(self):
+        self.en_arr = []	
+        self.de_arr = []	
+    
+    def is_empty(self):
+        return self.size() == 0
+    
+    def size(self):
+        return len(self.en_arr) + len(self.de_arr)
+    
+    def enqueue(self, x):
+        self.en_arr.append(x)
+    
+    def peek(self):
+        self._transfer()
+        return self.de_arr[-1]
+    
+    def dequeue(self):
+        self._transfer()
+        return self.de_arr.pop()
+    
+    def _transfer(self):
+        if not self.de_arr:
+            while self.en_arr:
+                self.de_arr.append(self.en_arr.pop())</code>
 		</div>
 		<p>To make sure that our new <code>Queue</code> class works the way it should, we only need to run Pytest.</p> 
 	</section>
