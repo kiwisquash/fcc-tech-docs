@@ -23,7 +23,6 @@ body {
 .code-block {
 	margin: auto;
 	width: 95%;
-	overflow-x: scroll;
 	border-radius: 20px;
 	box-shadow: 3px 3px 2px 2px #ccc;
 }
@@ -32,7 +31,7 @@ body {
 	background: hsl(134, 90%, 94%);
 	border-radius: 20px 20px 0px 0px;
 	border-style: solid;
-	border-width: 2px 2px 2px 2px;
+	border-width: 1px;
 	padding: 15px;
 	margin: 0;
 }
@@ -42,11 +41,18 @@ body {
 	text-align: left;
   word-break: normal;
   word-wrap: normal;
+	white-space: nowrap;
+	line-height: 1.5;
 	background: hsl(0, 0%, 90%);
 	border-radius: 0 0 20px 20px;
 	border-style: solid;
-	border-width: 0px 2px 2px 2px;
-	padding: 15px;
+	border-width: 0px 1px 1px 1px;
+	overflow-x: scroll;
+	padding: 5px;
+}
+
+.code-block ul {
+	padding-left: 1.25em;
 }
 
 .code-block li {
@@ -87,6 +93,10 @@ footer {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
+.code-block ul {
+	padding-left: 2em;
+}
 
 }
 
