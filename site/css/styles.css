@@ -1,12 +1,9 @@
  /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) {...} */
 
-
-
 body {
 	margin: 0;
 }
-
 
 #navbar {
 	text-align: center;
@@ -14,18 +11,31 @@ body {
 	background-color: white;
 }
 
-
 .nav-link {
 	display: block;
 	width: 100%;
 }
 
+.main-section {
+	padding: 0 15px;
+}
+
+.code-block {
+	margin: auto;
+	width: 90%;
+	overflow-x: scroll;
+}
 
 .code-block code {
 	text-align: left;
 	white-space: pre;
   word-break: normal;
   word-wrap: normal;s
+}
+
+footer {
+	font-size: small;
+	text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
