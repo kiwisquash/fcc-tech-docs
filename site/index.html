@@ -13,7 +13,11 @@
 		<a class="nav-link" href="#Introduction">Introduction</a>
 		<a class="nav-link" href="#What_is_Pytest">What is Pytest</a>
 		<a class="nav-link" href="#What_is_queue">What is queue</a>
-		<a class="nav-link" href="#Constructing_the_queue">Constructing the queue</a>
+		<a class="nav-link" href="#Constructing_the_is_empty_method">Constructing the is_empty method</a>
+		<a class="nav-link" href="#Constructing_the_enqueue_method">Constructing the enqueue method</a>
+		<a class="nav-link" href="#Constructing_the_size_method">Constructing the size method</a>
+		<a class="nav-link" href="#Constructing_the_peek_method">Constructing the peek method</a>
+		<a class="nav-link" href="#Constructing_the_dequeue_method">Constructing the dequeue method</a>
 		<a class="nav-link" href="#Refactoring_for_better_runtime">Refactoring for better runtime</a>
 		</div>
 	</nav>
@@ -88,10 +92,8 @@ def test_hello_name(name):
 			</div>
 			<p>All methods listed above should have a runtime of <code>O(1)</code>.</p>
 	</section>
-	<section id="Constructing_the_queue" class="main-section">
-		<header><h2>Constructing the queue</h2></header>
-		<div class="sub-section">
-		<h3>is_empty(self)</h3>
+	<section id="Constructing_the_is_empty_method" class="main-section">
+		<header><h2>Constructing the is_empty method</h2></header>
 		<p>When a queue is created, the queue should be empty.</p>
 		<div class="code-block">
 			<p>test_queue.py</p>
@@ -109,223 +111,220 @@ def test_is_empty():
     return True
 			</code>
 		</div>
-		</div>
-		<div class="sub-section">
-		<h3>enqueue()</h3>
-		<p>When an item is added to a queue with enqueue, the queue is no longer empty.</p>
-		<p><code>test_is_empty()</code> can be updated as follows:</p>
-		<div class="code-block">
-			<p>test_queue.py</p>
-			<code>def test_is_empty():
-    new_queue = Queue()
-    assert new_queue.is_empty == True
-    new_queue.enqueue(1)
-    assert new_queue.is_empty == False
-    new_queue.enqueue(2)
-    assert new_queue.is_empty == False
-</code>
-</div>
-		
-		<p>The following passes all the tests we have so far.</p>	
-		<div class="code-block">
-			<p>queue.py</p>
-			<code>def __init__(self):
-    self.is_empty = True
+		<section id="Constructing_the_enqueue_method" class="main-section">
+			<header><h2>Constructing the enqueue method</h2></header>
+			<p>When an item is added to a queue with enqueue, the queue is no longer empty.</p>
+			<p><code>test_is_empty()</code> can be updated as follows:</p>
+			<div class="code-block">
+				<p>test_queue.py</p>
+				<code>def test_is_empty():
+					new_queue = Queue()
+					assert new_queue.is_empty == True
+					new_queue.enqueue(1)
+					assert new_queue.is_empty == False
+					new_queue.enqueue(2)
+					assert new_queue.is_empty == False
+				</code>
+			</div>
 
-def is_empty(self):
-    return self.is_empty
+			<p>The following passes all the tests we have so far.</p>	
+			<div class="code-block">
+				<p>queue.py</p>
+				<code>def __init__(self):
+					self.is_empty = True
 
-def enqueue():
-    self.is_empty = False</code>
-		</div>
-		
-		</div>
-		<div class="sub-section">
-		<h3>size()</h3>
+					def is_empty(self):
+					return self.is_empty
+
+					def enqueue():
+					self.is_empty = False</code>
+			</div>
+		</section>
+		<section id="Constructing_the_size_method" class="main-section">
+			<header><h2>Constructing the size method</h2></header>
 			<p>The size of the queue should start out 0, then increment by 1 each time enqueue is called.</p>
 			<p>In fact, most of <code>test_size()</code> can be copied from <code>test_is_empty()</code>:</p>
 			<div class="code-block">
 				<p>test_queue.py</p>
 				<code>def test_size():
-    new_queue = Queue()
-    assert new_queue.size() == 0
-    new_queue.enqueue("x")
-    assert new_queue.size() == 1
-    new_queue.enqueue("x")
-    assert new_queue.size() == 2
+					new_queue = Queue()
+					assert new_queue.size() == 0
+					new_queue.enqueue("x")
+					assert new_queue.size() == 1
+					new_queue.enqueue("x")
+					assert new_queue.size() == 2
 				</code>
 			</div>
-			
+
 			<p>The <code>Queue</code> class must be updated to keep track of the number of items <code>enqueue()</code> is called:</p>	
 			<div class="code-block">
 				<p>queue.py</p>
 				<code>def __init__(self):
-    self.is_empty = True
-    self.count = 0
+					self.is_empty = True
+					self.count = 0
 
-def is_empty(self):
-    return self.is_empty
+					def is_empty(self):
+					return self.is_empty
 
-def enqueue(self, x):
-    self.is_empty = False
-    self.count += 1
+					def enqueue(self, x):
+					self.is_empty = False
+					self.count += 1
 
-def size(self):
-    return self.count</code>
+					def size(self):
+					return self.count</code>
 			</div>
-			
+
 			<p>While the current code works perfectly fine, <code>queue.py</code> can be refactored as follows:</p>
 			<div class="code-block">
 				<p>queue.py</p>
 				<code>def __init__(self):
-    self.count = 0
+					self.count = 0
 
-def is_empty(self):
-    return self.count == 0
+					def is_empty(self):
+					return self.count == 0
 
-def enqueue(self, x):
-    self.count += 1
+					def enqueue(self, x):
+					self.count += 1
 
-def size(self):
-    return self.count</code>
+					def size(self):
+					return self.count</code>
 			</div>
-		</div>
-		<div class="sub-section">
-			<h3>peek()</h3>
+		</section>
+		<section id="Constructing_the_peek_method" class="main-section">
+			<header><h2>Constructing the peek method</h2></header>
 			<p><code>peek()</code> should return the head.</p>
-				<div class="code-block">
-					<p>test_queue.py</p>
-					<code>
-def test_peek():
-    new_queue = Queue()
-    new_queue.enqueue("x")
-    assert new_queue.peek() == "x"
-    new_queue.enqueue("y")
-    assert new_queue.peek() == "x"
-    new_queue.enqueue("z")
-    assert new_queue.peek() == "x"</code>
-				</div>
-				
-				<p>Here are the corresponding changes to the <code>Queue</code> class:</p>	
-				<div class="code-block">
-					<p>queue.py</p>
-					<code>
+			<div class="code-block">
+				<p>test_queue.py</p>
+				<code>
+					def test_peek():
+					new_queue = Queue()
+					new_queue.enqueue("x")
+					assert new_queue.peek() == "x"
+					new_queue.enqueue("y")
+					assert new_queue.peek() == "x"
+					new_queue.enqueue("z")
+					assert new_queue.peek() == "x"</code>
+			</div>
 
-def __init__(self):
-    self.count = 0
-    self.head = None
+			<p>Here are the corresponding changes to the <code>Queue</code> class:</p>	
+			<div class="code-block">
+				<p>queue.py</p>
+				<code>
 
-def enqueue(self, x):
-    self.count += 1
-    self.head = x
+					def __init__(self):
+					self.count = 0
+					self.head = None
 
-def peek(self):
-    return self.head
+					def enqueue(self, x):
+					self.count += 1
+					self.head = x
 
-</code>
+					def peek(self):
+					return self.head
+
+				</code>
 			</div>
 			<p><span class="note">Note</span>: The constructions above ignores the edge case when the queue is empty. The reader is encouraged to handle this edge case.</p>
-<p>So far, our <code>Queue</code> lacked any semblance of what one might intuitively think as a queue&#8212;a data structure that hold multiple items. This will change with the addition of the <code>dequeue</code>.</p>
-		</div>
-		<div class="sub-section">
-			<h3>dequeue()</h3>
+			<p>So far, our <code>Queue</code> lacked any semblance of what one might intuitively think as a queue&#8212;a data structure that hold multiple items. This will change with the addition of the <code>dequeue</code>.</p>
+		</section>
+		<section id="Constructing_the_dequeue_method" class="main-section">
+			<header><h2>Constructing the dequeue method</h2></header>
 			<p><code>test_dequeue()</code> should remove and return the head of a queue. As a result, the queue will have a new head, which is the element that was enqueued just after the original head element. For the first time, our <code>Queue</code> is required to keep track of the elements that have been added after the very first enqueue.</p>
 			<p>Consequently, this means that in addition to adding <code>test_dequeue()</code>, a few upates should be made to the existing tests:
-				<div class="code-block">
-					<p>test_queue.py</p>
-					<code>def test_is_empty():
-    new_queue = Queue()
-    assert new_queue.is_empty == True
-    new_queue.enqueue(1)
-    assert new_queue.is_empty == False
-    new_queue.enqueue(2)
-    assert new_queue.is_empty == False
-    new_queue.dequeue()
-    assert new_queue.is_empty == False
-    new_queue.dequeue()
-    assert new_queue.is_empty == True
+			<div class="code-block">
+				<p>test_queue.py</p>
+				<code>def test_is_empty():
+					new_queue = Queue()
+					assert new_queue.is_empty == True
+					new_queue.enqueue(1)
+					assert new_queue.is_empty == False
+					new_queue.enqueue(2)
+					assert new_queue.is_empty == False
+					new_queue.dequeue()
+					assert new_queue.is_empty == False
+					new_queue.dequeue()
+					assert new_queue.is_empty == True
 
-def test_size():
-    new_queue = Queue()
-    assert new_queue.size() == 0
-    new_queue.enqueue("x")
-    assert new_queue.size() == 1
-    new_queue.enqueue("y")
-    assert new_queue.size() == 2
-    new_queue.dequeue()
-    assert new_queue.size() == 1
-    new_queue.dequeue()
-    assert new_queue.size() == 0
+					def test_size():
+					new_queue = Queue()
+					assert new_queue.size() == 0
+					new_queue.enqueue("x")
+					assert new_queue.size() == 1
+					new_queue.enqueue("y")
+					assert new_queue.size() == 2
+					new_queue.dequeue()
+					assert new_queue.size() == 1
+					new_queue.dequeue()
+					assert new_queue.size() == 0
 
-def test_peek():
-    new_queue = Queue()
-    new_queue.enqueue("x")
-    assert new_queue.peek() == "x"
-    new_queue.enqueue("y")
-    assert new_queue.peek() == "x"
-    new_queue.enqueue("z")
-    assert new_queue.peek() == "x"
-    new_queue.dequeue()
-    assert new_queue.peek() == "y"
-    new_queue.dequeue()
-    assert new_queue.peek() == "z"
-						
-def test_dequeue():
-    new_queue = Queue()
-        for i in ["x", "y", "z"]:
-        new_queue.enqueue(i)
-    for i in ["x", "y", "z"]:
-        assert new_queue.dequeue() == i</code>
-				</div>
-				
-				<p>There are many ways to update the <code>Queue</code> class, but the simplest method would be to use a Python list.</p>
-				<div class="code-block">
-					<p>queue.py</p>
-					<code>
-def __init__(self):
-    self.count = 0
-    self.arr = []	
+					def test_peek():
+					new_queue = Queue()
+					new_queue.enqueue("x")
+					assert new_queue.peek() == "x"
+					new_queue.enqueue("y")
+					assert new_queue.peek() == "x"
+					new_queue.enqueue("z")
+					assert new_queue.peek() == "x"
+					new_queue.dequeue()
+					assert new_queue.peek() == "y"
+					new_queue.dequeue()
+					assert new_queue.peek() == "z"
 
-def is_empty(self):
-    return self.count == 0
+					def test_dequeue():
+					new_queue = Queue()
+					for i in ["x", "y", "z"]:
+					new_queue.enqueue(i)
+					for i in ["x", "y", "z"]:
+					assert new_queue.dequeue() == i</code>
+			</div>
 
-def size(self):
-    return self.count
+			<p>There are many ways to update the <code>Queue</code> class, but the simplest method would be to use a Python list.</p>
+			<div class="code-block">
+				<p>queue.py</p>
+				<code>
+					def __init__(self):
+					self.count = 0
+					self.arr = []	
 
-def enqueue(self, x):
-    self.count += 1
-    self.arr.append(x)
+					def is_empty(self):
+					return self.count == 0
 
-def peek(self):
-    return self.arr[0]
+					def size(self):
+					return self.count
 
-def dequeue(self):
-    self.count -= 1
-    return self.arr.pop(0)
+					def enqueue(self, x):
+					self.count += 1
+					self.arr.append(x)
+
+					def peek(self):
+					return self.arr[0]
+
+					def dequeue(self):
+					self.count -= 1
+					return self.arr.pop(0)
 				</code>
 			</div>
 			<p>There is actually on need to keep track of <code>count</code> now that we are using an array to track all the elements.</p>
 			<div class="code-block">
-					<p>queue.py</p>
-					<code>def __init__(self):
-    self.arr = []	
+				<p>queue.py</p>
+				<code>def __init__(self):
+					self.arr = []	
 
-def is_empty(self):
-    return self.size() == 0
+					def is_empty(self):
+					return self.size() == 0
 
-def size(self):
-    return len(self.arr)
+					def size(self):
+					return len(self.arr)
 
-def enqueue(self, x):
-    self.arr.append(x)
+					def enqueue(self, x):
+					self.arr.append(x)
 
-def peek(self):
-    return self.arr[0]
+					def peek(self):
+					return self.arr[0]
 
-def dequeue(self):
-    return self.arr.pop(0)</code>
+					def dequeue(self):
+					return self.arr.pop(0)</code>
 			</div>
-		</div>
 	</section>
 	<section  id="Refactoring_for_better_runtime" class="main-section">
 		<header><h2>Refactoring for better runtime</h2></header>
