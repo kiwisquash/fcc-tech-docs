@@ -40,7 +40,6 @@ body {
 .code-block code {
 	display: block;
 	text-align: left;
-	white-space: pre;
   word-break: normal;
   word-wrap: normal;
 	background: hsl(0, 0%, 90%);
@@ -48,6 +47,10 @@ body {
 	border-style: solid;
 	border-width: 0px 2px 2px 2px;
 	padding: 15px;
+}
+
+.code-block li {
+	list-style-type: none;
 }
 
 footer {
