@@ -21,7 +21,7 @@
 
 	<main id="main-doc"><section id="Introduction" class="main-section">
 			<header><h2>Introduction</h2></header>
-			<p>In the sections below, I will demonstrate test-driven development using Python and Pytest by constructing a very simple data structure called queue.</p>
+			<p>This article demonstrates test-driven development (TDD) by constructing a very simple data structure called queue in Python.</p>
 		</section>
 	<section id="What_is_test_driven_development" class="main-section">
 			<header><h2>What is test driven development</h2></header>
@@ -30,7 +30,7 @@
 	</section>
 	<section id="What_is_Pytest" class="main-section">
 			<header><h2>What is Pytest</h2></header>
-			<p>Pytest is a popular testing framework. It allows you to easily write tests.</p>
+			<p>Pytest is a popular testing framework that allows you to easily write tests.</p>
 			<h3>Example: hello.py</h3>
 			<p> Here is a simple program: </p>
 			<div class="code-block">
@@ -54,17 +54,18 @@ def test_hello_name(name):
 				pytest test_hello.py
 			</code>
 			<p><span class="note">Note:</span> All test functions should have 'test_' as the first 5 chars of the name.</p>
+			<p>For more details regarding Pytest, including installation instructions, please check <a href="https://docs.pytest.org/en/latest/">pytest's documentation page.</a>
 	</section>
 	<section id="What_is_queue" class="main-section">
 			<header><h2>What is queue</h2></header>
-			<p>Queue is a data structure whih follows the <span class="first-letter">First-In-first-out</span> paradigm.</p>
-			<p>In our construction, the Queue class will have the following methods:</p>
+			<p>Queue is a data structure whih follows the <span class="first-letter">First-In-First-Out</span> paradigm.</p>
+			<p>In our construction, the <code>Queue</code> class will have the following methods:</p>
 			<ul>
-				<li>is_empty(): check whether my queue is empty or not</li>
-				<li>size(): size of the queue.</li>
-				<li>enqueue(x): add “x” to the queue</li>
-				<li>peek(): return the item at the “head” of the queue without making any changes to the queue itself</li>
-				<li>dequeue(): remove the item at the “head” of the queue and return it</li>
+				<li><code>is_empty()</code>: check whether my queue is empty or not</li>
+				<li><code>size()</code>: size of the queue.</li>
+				<li><code>enqueue(x)</code>: add “x” to the queue</li>
+				<li><code>peek()</code>: return the item at the “head” of the queue without making any changes to the queue itself</li>
+				<li><code>dequeue()</code>: remove the item at the “head” of the queue and return it</li>
 			</ul>
 			<p>In other words, <code>queue.py</code> will start out looking like this:</p>
 			<div class="code-block">
@@ -89,7 +90,7 @@ def peek(self):
 def dequeue(self):
     pass</code>
 			</div>
-			<p>Furthermore, all methods listed above should have a runtime of O(1).</p>
+			<p>All methods listed above should have a runtime of <code>O(1)</code>.</p>
 	</section>
 	<section id="Constructing_the_queue" class="main-section">
 		<header><h2>Constructing the queue</h2></header>
@@ -105,7 +106,7 @@ def test_is_empty():
     assert new_queue.is_empty == True</code>
 		</div>
 		
-		<p>We'll add more lines to <code>test_is_empty</code> as we go on. For now, we should just focus on defining the simplest <code>is_empty</code> emthod that will pass the test. And this can be done very easily:</p>	
+		<p><code>test_is_empty</code> is not much right now, but more lines will get added as other methods are implemented. For now, we should just focus on defining the simplest <code>is_empty</code> emthod that will pass the test. And this can be done very easily:</p>	
 		<div class="code-block">
 			<p>queue.py</p>
 			<code>def is_empty(self):
@@ -116,7 +117,7 @@ def test_is_empty():
 		<div class="sub-section">
 		<h3>enqueue()</h3>
 		<p>When an item is added to a queue with enqueue, the queue is no longer empty.</p>
-		<p>We can update test_is_empty() as follows:</p>
+		<p><code>test_is_empty()</code> can be updated as follows:</p>
 		<div class="code-block">
 			<p>test_queue.py</p>
 			<code>def test_is_empty():
@@ -129,7 +130,7 @@ def test_is_empty():
 </code>
 </div>
 		
-		<p>We can update queue.py as follows:</p>	
+		<p>The following passes all the tests we have so far.</p>	
 		<div class="code-block">
 			<p>queue.py</p>
 			<code>def __init__(self):
@@ -142,12 +143,11 @@ def enqueue():
     self.is_empty = False</code>
 		</div>
 		
-		<p>Again, run pytest to verify that all tests pass.</p>
 		</div>
 		<div class="sub-section">
-		<h3>size(self)</h3>
-			<p>The size of the queue should start out 0, then increment by 1 each time enqueue is called</p>
-			<p>In fact, test_size() can be written in a way similar to test_is_empty():</p>
+		<h3>size()</h3>
+			<p>The size of the queue should start out 0, then increment by 1 each time enqueue is called.</p>
+			<p>In fact, most of <code>test_size()</code> can be copied from <code>test_is_empty()</code>:</p>
 			<div class="code-block">
 				<p>test_queue.py</p>
 				<code>...
@@ -161,7 +161,7 @@ def test_size():
 				</code>
 			</div>
 			
-			<p>We can update queue.py to keep track of the number of items enqueue is called:</p>	
+			<p>The <code>Queue</code> class must be updated to keep track of the number of items <code>enqueue()</code> is called:</p>	
 			<div class="code-block">
 				<p>queue.py</p>
 				<code>def __init__(self):
@@ -179,9 +179,7 @@ def size(self):
     return self.count</code>
 			</div>
 			
-			<p>Run pytest to verify that all tests pass.</p>
-			<p>While the current code works perfectly fine, there is room to simplify.</p>
-			<p>We can refactor the queue.py as follows:</p>
+			<p>While the current code works perfectly fine, <code>queue.py</code> can be refactored as follows:</p>
 			<div class="code-block">
 				<p>queue.py</p>
 				<code>def __init__(self):
@@ -196,11 +194,10 @@ def enqueue(self, x):
 def size(self):
     return self.count</code>
 			</div>
-			<p>Run pytest to make sure that the refactored code passes all tests.</p>
 		</div>
 		<div class="sub-section">
 			<h3>peek()</h3>
-				<p>peek() should return the head of a queue. For simplicity, we will ignore the case of the empty queue./p>
+			<p><code>peek()</code> should return the head.</p>
 				<div class="code-block">
 					<p>test_queue.py</p>
 					<code>...
@@ -214,7 +211,7 @@ def test_peek():
     assert new_queue.peek() == "x"</code>
 				</div>
 				
-				<p>We can update queue.py to hold the first item that is added to the queue:</p>	
+				<p>Here are the corresponding changes to the <code>Queue</code> class:</p>	
 				<div class="code-block">
 					<p>queue.py</p>
 					<code>...
@@ -232,12 +229,13 @@ def peek(self):
 
 ...</code>
 			</div>
-			<p>Run pytest to make sure that the refactored code passes all tests.</p>
+			<p><span class="note">Note</span>: The constructions above ignores the edge case when the queue is empty. The reader is encouraged to handle this edge case.</p>
+<p>So far, our <code>Queue</code> lacked any semblance of what one might intuitively think as a queue&#8212;a data structure that hold multiple items. This will change with the addition of the <code>dequeue</code>.</p>
 		</div>
 		<div class="sub-section">
 			<h3>dequeue()</h3>
-				<p>So far, our queue() class did not really feel like a queue at all. With the addition of dequeue, our queue class will be forced to look more like a queue.</p>
-				<p>In addition to creating test_dequeue(), we can update some of the existing tests as follows:</p>
+			<p><code>test_dequeue()</code> should remove and return the head of a queue. As a result, the queue will have a new head, which is the element that was enqueued just after the original head element. For the first time, our <code>Queue</code> is required to keep track of the elements that have been added after the very first enqueue.</p>
+			<p>Consequently, this means that in addition to adding <code>test_dequeue()</code>, a few upates should be made to the existing tests:
 				<div class="code-block">
 					<p>test_queue.py</p>
 					<code>def test_is_empty():
@@ -285,8 +283,7 @@ def test_dequeue():
         assert new_queue.dequeue() == i</code>
 				</div>
 				
-				<p>Now, queue is actually required to keep track of the data that is added to it. </p>	
-				<p>Here is one possible way to do it using a list.</p>
+				<p>There are many ways to update the <code>Queue</code> class, but the simplest method would be to use a Python list.</p>
 				<div class="code-block">
 					<p>queue.py</p>
 					<code>
@@ -312,8 +309,7 @@ def dequeue(self):
     return self.arr.pop(0)
 				</code>
 			</div>
-			<p>Run pytest to make sure that our new queue passes all tests.</p>
-			<p>As before, we should see if there is room for refactoring, and there is!</p>
+			<p>There is actually on need to keep track of <code>count</code> now that we are using an array to track all the elements.</p>
 			<div class="code-block">
 					<p>queue.py</p>
 					<code>def __init__(self):
@@ -338,9 +334,8 @@ def dequeue(self):
 	</section>
 	<section  id="Refactoring_for_better_runtime" class="main-section">
 		<header><h2>Refactoring for better runtime</h2></header>
-		<p>In the last section, we successfully constructed a queue class that passes all the tests.</p>
-		<p>However, there is a performance issue with dequeue(): pop(0) is O(n), where n is the size of the queue. Ideally, we would like all queue operations to be O(1).</p>
-		<p>To do this, we can model the queue using 2 lists, one for enqueue and one for dequeue. Whenever peek() or dequeue() is called and the dequeue list is empty, the items from enqueue will be popped into the dequeue list. Below, I added a private method called 'transfer' which does exactly that.</p>
+		<p>The <code>Queue</code> class in the previous section has a performance issue with <code>dequeue()</code>. The <code>pop(0)</code> is <code>O(n)</code>, where <code>n</code> is the size of the queue. Ideally, we would like all queue operations to be <code>O(1)</code>.</p>
+		<p>To do this, we can model the queue using 2 lists, one for enqueue and one for dequeue. Whenever <code>peek()</code> or <code>dequeue()</code> is called and the dequeue list is empty, the items from enqueue will be popped into the dequeue list. Below, I added a private method called <code>_transfer</code> which does exactly that.</p>
 		<div class="code-block">
 			<p>queue.py</p>
 		<code>def __init__(self):
@@ -369,7 +364,7 @@ def _transfer(self):
         while self.en_arr:
             self.de_arr.append(self.en_arr.pop())</code>
 		</div>
-		<p>We don't need to make any changes to the test_queue.py. We just need to run it and see if the new queue class passes all the test. And they do.</p> 
+		<p>To make sure that our new <code>Queue</code> class works the way it should, we only need to run Pytest.</p> 
 	</section>
 	<footer>
     <p>Copyright &#169; <time datetime="2019">2019</time> by Ki Song. All rights reserved.</p>
