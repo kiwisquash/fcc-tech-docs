@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/styles.css">
-<title>Constructing a Queue in Python</title>
+<title>Using TDD to Construct Queue</title>
 </head>
 <body>
 	<nav id="navbar">
-		<header><h1>Constructing a Python queue class with TDD</h1></header>
+		<header><h1>Using TDD to Construct Queue</h1></header>
 		<div class="nav-links">
 		<a class="nav-link" href="#Introduction">Introduction</a>
 		<a class="nav-link" href="#What_is_test_driven_development">What is test driven development</a>
@@ -39,7 +39,8 @@
     return f'hello {name}!'
 			</code>
 			</div>
-			<p>The `test_hello_name.py` is a test for `hello.py`.</p>	
+			<p>The <code>test_hello_name.py</code> is a test for <code>hello.py</code>.</p>	
+
 			<div class="code-block">
 			<p>test_hello_name.py</p>
 			<code>from hello import hello_name
@@ -65,7 +66,7 @@ def test_hello_name(name):
 				<li>peek(): return the item at the “head” of the queue without making any changes to the queue itself</li>
 				<li>dequeue(): remove the item at the “head” of the queue and return it</li>
 			</ul>
-			<p>In other words, `queue.py` will start out looking like this:</p>
+			<p>In other words, <code>queue.py</code> will start out looking like this:</p>
 			<div class="code-block">
 				<p>queue.py</p>
 				<code>class Queue:
@@ -104,7 +105,7 @@ def test_is_empty():
     assert new_queue.is_empty == True</code>
 		</div>
 		
-		<p>We'll add more lines to `test_is_empty` as we go on. For now, we should just focus on defining the simplest `is_empty` emthod that will pass the test. And this can be done very easily:</p>	
+		<p>We'll add more lines to <code>test_is_empty</code> as we go on. For now, we should just focus on defining the simplest <code>is_empty</code> emthod that will pass the test. And this can be done very easily:</p>	
 		<div class="code-block">
 			<p>queue.py</p>
 			<code>def is_empty(self):
