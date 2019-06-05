@@ -8,7 +8,7 @@ $nav-width-large-scn: 250px;
 $nav-padding-large-scn: 10px;
 $code-indent-sm-scn: 1.25em ;
 $code-indent-large-scn: 2em;
-$nav-height-sm-scn: 200px; 
+$nav-height-sm-scn: 150px; 
 
 body {
 	margin: 0;
@@ -110,7 +110,12 @@ footer {
 }
 
 // Small screen data
+
 @media only screen and (max-width: 768px) {
+
+	h1 {
+		font-size: 125%;
+	}
 
 #navbar {
 	width: 100%;
@@ -124,8 +129,8 @@ footer {
 }
 
 .nav-links {
-	overflow-y: scroll;
 	height: 4em;
+	overflow-y: scroll;
 }
 
 :target::before {
