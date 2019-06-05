@@ -1,12 +1,14 @@
 $scrapy-blue: hsl(203, 63.4%, 43.9%);
 $scrapy-black: hsl(0, 4.6%, 12.7%);
-$scrapy-white: hsl(0,0%,85%);
+$scrapy-gray: hsl(0,0%,85%);
+$scrapy-white: hsl(0,0%,98.8%);
 $link-highlight: hsl(0, 4.6%, 24%);
 $code-block-top-color: hsl(134, 90%, 94%);
 $nav-width-large-scn: 250px;
 $nav-padding-large-scn: 10px;
 $code-indent-sm-scn: 1.25em ;
 $code-indent-large-scn: 2em;
+$nav-height-sm-scn: 180px; 
 
 body {
 	margin: 0;
@@ -15,7 +17,7 @@ body {
 #navbar {
 	text-align: center;
 	position: fixed;
-	color: $scrapy-white;
+	color: $scrapy-gray;
 	background-color: $scrapy-black;
 }
 
@@ -31,7 +33,7 @@ body {
 
 .nav-link {
 	display: block;
-	color: $scrapy-white;
+	color: $scrapy-gray;
 	width: 100%;
 	text-decoration: none;
 }
@@ -40,8 +42,10 @@ body {
 	background-color: $link-highlight;
 }
 
-.main-section {
-	padding: 0 15px;
+#main-doc {
+	padding: 15px;
+	background-color: $scrapy-white;
+	color: $scrapy-black;
 }
 
 .code-block {
@@ -57,6 +61,7 @@ body {
 	border-style: solid;
 	border-width: 1px;
 	padding: 15px;
+	padding-left: $code-indent-sm-scn; 
 	margin: 0;
 }
 
@@ -88,17 +93,18 @@ footer {
 	text-align: center;
 }
 
+// Small screen data
 @media only screen and (max-width: 768px) {
 
 #navbar {
 	width: 100%;
-	height: 180px;
+	height: $nav-height-sm-scn;
 	top: 0;
 	left: 0;
 }
 
 #main-doc {
-	margin-top: 180px;
+	margin-top: $nav-height-sm-scn;
 }
 
 .nav-links {
@@ -109,14 +115,21 @@ footer {
 :target::before {
   content: "";
   display: block;
-  height: 180px; /* fixed header height*/
-  margin: -180px 0 0; /* negative fixed header height */
+  height: $nav-height-sm-scn - 20px; /* fixed header height*/
+  margin: 0;
+  margin-top: -$nav-height-sm-scn + 20px; /* negative fixed header height */
+	padding: 0;
+	z-index: -100;
 }
 
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
+.code-block p {
+	padding-left: $code-indent-large-scn;
+}
 
 .code-block ul {
 	padding-left: $code-indent-large-scn;
@@ -137,23 +150,16 @@ footer {
 
 #navbar h1 {
 	padding: $nav-padding-large-scn; 
-	height: 10px;
 }
 
 #main-doc {
 	margin-top: 0;
-	margin-left: $nav-width-large-scn + 2*$nav-padding-large-scn;
-}
-
-.nav-links {
-	overflow-y: none;
-	height: 80px;
+	margin-left: $nav-width-large-scn;
 }
 
 :target::before {
   display: none;
 }
-
 
 }
 
