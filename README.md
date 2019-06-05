@@ -10,4 +10,4 @@ The [list of requirements and mock-ups](https://docs.google.com/document/d/1A0sH
 
 # Link to CodePen
 
-https://codepen.io/kiwisquash/pen/pBRqqw
+https://codepen.io/kiwisquash/pen/WBPobq
