@@ -10,6 +10,10 @@ $code-indent-sm-scn: 1.25em ;
 $code-indent-large-scn: 2em;
 $nav-height-sm-scn: 150px; 
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 	font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
@@ -190,10 +194,3 @@ footer {
 }
 
 }
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-/* @media only screen and (min-width: 1200px) {...} */ 
