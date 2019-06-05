@@ -28,7 +28,7 @@
 			<p><a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia's entry for test driven development</a> says the following:</p>
 			<blockquote>Test-driven development is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.</blockquote>
 			<p>The sections below demonstrates test-driven development (TDD) by constructing a very simple data structure called queue in Python.</p>
-	</section>
+	</section><hr/>
 	<section id="What_is_Pytest" class="main-section">
 			<header><h2>What is Pytest</h2></header>
 			<p>Pytest is a popular testing framework that allows you to easily write tests.</p>
@@ -63,7 +63,7 @@
 				</code></div>
 			<p><span class="note">Note:</span> All test functions should have 'test_' as the first 5 chars of the name.</p>
 			<p>For more details regarding Pytest, including installation instructions, please check <a href="https://docs.pytest.org/en/latest/">pytest's documentation page.</a>
-	</section>
+	</section><hr/>
 	<section id="What_is_queue" class="main-section">
 			<header><h2>What is queue</h2></header>
 			<p>Queue is a data structure whih follows the <span class="first-letter">First-In-First-Out</span> paradigm.</p>
@@ -101,7 +101,7 @@
 					</ul></code>
 			</div>
 			<p>All methods listed above should have a runtime of <code>O(1)</code>.</p>
-	</section>
+	</section><hr/>
 	<section id="Constructing_the_is_empty_method" class="main-section">
 		<header><h2>Constructing the is_empty method</h2></header>
 		<p>When a queue is created, the queue should be empty.</p>
@@ -131,7 +131,7 @@
 				</ul>
 			</code>
 		</div>
-	</section>
+	</section><hr/>
 		<section id="Constructing_the_enqueue_method" class="main-section">
 			<header><h2>Constructing the enqueue method</h2></header>
 			<p>When an item is added to a queue with enqueue, the queue is no longer empty.</p>
@@ -180,7 +180,7 @@
 					</ul>
 				</code>
 			</div>
-		</section>
+		</section><hr/>
 		<section id="Constructing_the_size_method" class="main-section">
 			<header><h2>Constructing the size method</h2></header>
 			<p>The size of the queue should start out 0, then increment by 1 each time enqueue is called.</p>
@@ -242,7 +242,7 @@
 					</ul>
 				</code>
 			</div>
-		</section>
+		</section><hr/>
 		<section id="Constructing_the_peek_method" class="main-section">
 			<header><h2>Constructing the peek method</h2></header>
 			<p><code>peek()</code> should return the head.</p>
@@ -284,7 +284,7 @@
 			</div>
 			<p><span class="note">Note</span>: The constructions above ignores the edge case when the queue is empty. The reader is encouraged to handle this edge case.</p>
 			<p>So far, our <code>Queue</code> lacked any semblance of what one might intuitively think as a queue&#8212;a data structure that hold multiple items. This will change with the addition of the <code>dequeue</code>.</p>
-		</section>
+		</section><hr/>
 		<section id="Constructing_the_dequeue_method" class="main-section">
 			<header><h2>Constructing the dequeue method</h2></header>
 			<p><code>test_dequeue()</code> should remove and return the head of a queue. As a result, the queue will have a new head, which is the element that was enqueued just after the original head element. For the first time, our <code>Queue</code> is required to keep track of the elements that have been added after the very first enqueue.</p>
@@ -404,7 +404,7 @@
 						<li><ul><li>return self.arr.pop(0)</li></ul></li>
 					</ul></code>
 			</div>
-	</section>
+	</section><hr/>
 	<section  id="Refactoring_for_better_runtime" class="main-section">
 		<header><h2>Refactoring for better runtime</h2></header>
 		<p>The <code>Queue</code> class in the previous section has a performance issue with <code>dequeue()</code>. The <code>pop(0)</code> is <code>O(n)</code>, where <code>n</code> is the size of the queue. Ideally, we would like all queue operations to be <code>O(1)</code>.</p>
@@ -460,11 +460,11 @@
 				</ul></code>
 		</div>
 		<p>To make sure that our new <code>Queue</code> class works the way it should, we only need to run Pytest.</p> 
-	</section>
+	</section><hr/>
 	<footer>
     <p>Copyright &#169; <time datetime="2019">2019</time> by Ki Song. All rights reserved.</p>
 		<p>See code on the <a href="https://github.com/kiwisquash/fcc-product-landing">github repo</a> or <a href="https://codepen.io/kiwisquash/pen/zXewzO">codepen</a>.</p>
-		<p>This page was last updated on <time datetime="2019-06-03">June 3rd, 2019</time>.</p>
+		<p>This page was last updated on <time datetime="2019-06-04">June 4th, 2019</time>.</p>
 	</footer>
 	</main>
 </body>
