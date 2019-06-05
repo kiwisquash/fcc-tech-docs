@@ -1,5 +1,12 @@
- /* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 600px) {...} */
+$scrapy-blue: hsl(203, 63.4%, 43.9%);
+$scrapy-black: hsl(0, 4.6%, 12.7%);
+$scrapy-white: hsl(0,0%,85%);
+$link-highlight: hsl(0, 4.6%, 24%);
+$code-block-top-color: hsl(134, 90%, 94%);
+$nav-width-large-scn: 250px;
+$nav-padding-large-scn: 10px;
+$code-indent-sm-scn: 1.25em ;
+$code-indent-large-scn: 2em;
 
 body {
 	margin: 0;
@@ -8,12 +15,12 @@ body {
 #navbar {
 	text-align: center;
 	position: fixed;
-	color: hsl(0,0%,85%);
-	background-color: hsl(0, 4.6%, 12.7%);
+	color: $scrapy-white;
+	background-color: $scrapy-black;
 }
 
 #navbar h1 {
-	background-color: hsl(203, 63.4%, 43.9%);
+	background-color: $scrapy-blue;
 	margin: 0;
 	padding: 1em 0em;
 }
@@ -24,13 +31,13 @@ body {
 
 .nav-link {
 	display: block;
-	color: hsl(0,0%,85%);
+	color: $scrapy-white;
 	width: 100%;
 	text-decoration: none;
 }
 
 .nav-link:hover {
-	background-color: hsl(0, 4.6%, 24%);
+	background-color: $link-highlight;
 }
 
 .main-section {
@@ -45,7 +52,7 @@ body {
 }
 
 .code-block p {
-	background: hsl(134, 90%, 94%);
+	background: $code-block-top-color;
 	border-radius: 20px 20px 0px 0px;
 	border-style: solid;
 	border-width: 1px;
@@ -69,7 +76,7 @@ body {
 }
 
 .code-block ul {
-	padding-left: 1.25em;
+	padding-left: $code-indent-sm-scn;
 }
 
 .code-block li {
@@ -112,7 +119,7 @@ footer {
 @media only screen and (min-width: 600px) {
 
 .code-block ul {
-	padding-left: 2em;
+	padding-left: $code-indent-large-scn;
 }
 
 }
@@ -122,19 +129,20 @@ footer {
 
 
 #navbar {
-	width: 250px;
+	width: $nav-width-large-scn;
 	height: 100%;
 	top: 0;
 	left: 0;
 }
 
 #navbar h1 {
-	padding: 10px; 
+	padding: $nav-padding-large-scn; 
+	height: 10px;
 }
 
 #main-doc {
 	margin-top: 0;
-	margin-left: 270px;
+	margin-left: $nav-width-large-scn + 2*$nav-padding-large-scn;
 }
 
 .nav-links {
