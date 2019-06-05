@@ -6,11 +6,20 @@ body {
 }
 
 #navbar {
-	padding: 10px;
 	text-align: center;
 	position: fixed;
-	background-color: hsl(0, 4.6%, 12.7%);
 	color: hsl(0,0%,85%);
+	background-color: hsl(0, 4.6%, 12.7%);
+}
+
+#navbar h1 {
+	background-color: hsl(203, 63.4%, 43.9%);
+	margin: 0;
+	padding: 1em 0em;
+}
+
+.nav-links {
+	margin: .5em auto;	
 }
 
 .nav-link {
@@ -117,6 +126,10 @@ footer {
 	height: 100%;
 	top: 0;
 	left: 0;
+}
+
+#navbar h1 {
+	padding: 10px; 
 }
 
 #main-doc {
