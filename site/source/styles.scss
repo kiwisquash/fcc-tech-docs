@@ -8,10 +8,12 @@ $nav-width-large-scn: 250px;
 $nav-padding-large-scn: 10px;
 $code-indent-sm-scn: 1.25em ;
 $code-indent-large-scn: 2em;
-$nav-height-sm-scn: 180px; 
+$nav-height-sm-scn: 200px; 
 
 body {
 	margin: 0;
+	font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
+	background-color: $scrapy-gray;
 }
 
 #navbar {
@@ -33,7 +35,7 @@ body {
 
 .nav-link {
 	display: block;
-	color: $scrapy-gray;
+	color: $code-block-top-color;
 	width: 100%;
 	text-decoration: none;
 }
@@ -43,9 +45,23 @@ body {
 }
 
 #main-doc {
-	padding: 15px;
+	padding: 0 15px;
 	background-color: $scrapy-white;
 	color: $scrapy-black;
+}
+
+h2 {
+	color: $scrapy-blue;
+}
+
+blockquote {
+	background-color: $scrapy-gray;
+	font-style: italic;
+	padding: 1em;
+}
+
+.note {
+	font-weight: bold;
 }
 
 .code-block {
@@ -109,7 +125,7 @@ footer {
 
 .nav-links {
 	overflow-y: scroll;
-	height: 80px;
+	height: 4em;
 }
 
 :target::before {
@@ -140,7 +156,6 @@ footer {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-
 #navbar {
 	width: $nav-width-large-scn;
 	height: 100%;
@@ -152,8 +167,16 @@ footer {
 	padding: $nav-padding-large-scn; 
 }
 
+.nav-link {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 90%;
+}
+
 #main-doc {
-	margin-top: 0;
+	margin-top: 0px;
+	max-width: 750px;
+	padding: 1px 22px;
 	margin-left: $nav-width-large-scn;
 }
 
